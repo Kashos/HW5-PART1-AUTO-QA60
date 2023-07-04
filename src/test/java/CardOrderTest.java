@@ -49,10 +49,9 @@ public class CardOrderTest {
             form.$(By.className("button")).click();
             i++;
         }
-        /*$("[data-test-id=replan-notification]")
-                .shouldHave(Condition.text("У вас уже запланирована встреча на другую дату. Перепланировать?"), Duration.ofSeconds(20))
-                .shouldBe(Condition.visible);*/
-        $(withText("У вас уже запланирована встреча на другую дату. Перепланировать?")).shouldBe(visible, Duration.ofSeconds(20));
+        $("[data-test-id=replan-notification]")
+                .shouldHave(Condition.text("У вас уже запланирована встреча на другую дату. Перепланировать?"), Duration.ofSeconds(20));
+        //$(withText("У вас уже запланирована встреча на другую дату. Перепланировать?")).shouldBe(visible, Duration.ofSeconds(20));
     }
 
 }
