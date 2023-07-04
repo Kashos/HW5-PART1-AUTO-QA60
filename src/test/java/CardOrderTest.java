@@ -36,8 +36,8 @@ public class CardOrderTest {
     @Test
     void shouldTestCardOrderTask1() {
         val date = new CardDeliveryDate("Уфа", "Петров Петр", "+79000000000");
-        int i = 1;
-        while (i != 2) {
+        //int i = 1;
+        //while (i != 2) {
             open("http://localhost:9999/");
             SelenideElement form = $(By.className("form"));
             form.$("[data-test-id=city] input").setValue(date.city);
@@ -47,11 +47,12 @@ public class CardOrderTest {
             form.$("[data-test-id=phone] input").setValue(date.phone);
             form.$("[data-test-id=agreement]").click();
             form.$(By.className("button")).click();
-            i++;
-        }
+            form.$(By.className("button")).click();
+            //i++;
+        //}
         $("[data-test-id=replan-notification]")
                 .shouldHave(Condition.text("У вас уже запланирована встреча на другую дату. Перепланировать?"), Duration.ofSeconds(20));
-        //$(withText("У вас уже запланирована встреча на другую дату. Перепланировать?")).shouldBe(visible, Duration.ofSeconds(20));
+
     }
 
 }
