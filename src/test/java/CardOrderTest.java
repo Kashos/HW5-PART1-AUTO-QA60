@@ -3,6 +3,7 @@ import com.codeborne.selenide.SelenideElement;
 import lombok.*;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -40,6 +41,7 @@ public class CardOrderTest {
             open("http://localhost:9999/");
             SelenideElement form = $(By.className("form"));
             form.$("[data-test-id=city] input").setValue(date.city);
+            form.$("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
             form.$("[data-test-id=date] input").setValue(planningDate);
             form.$("[data-test-id=name] input").setValue(date.name);
             form.$("[data-test-id=phone] input").setValue(date.phone);
@@ -47,9 +49,10 @@ public class CardOrderTest {
             form.$(By.className("button")).click();
             i++;
         }
-        $("[data-test-id=replan-notification]")
+        /*$("[data-test-id=replan-notification]")
                 .shouldHave(Condition.text("У вас уже запланирована встреча на другую дату. Перепланировать?"), Duration.ofSeconds(20))
-                .shouldBe(Condition.visible);
+                .shouldBe(Condition.visible);*/
+        $(withText("У вас уже запланирована встреча на другую дату. Перепланировать?")).shouldBe(visible, Duration.ofSeconds(20));
     }
 
 }
