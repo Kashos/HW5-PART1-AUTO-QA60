@@ -1,7 +1,10 @@
+package ru.netology.test;
 import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.Test;
 
 import org.openqa.selenium.Keys;
+import ru.netology.data.DataGenerator;
+
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.visible;
